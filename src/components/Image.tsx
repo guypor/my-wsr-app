@@ -15,7 +15,7 @@ class Image extends React.Component<ImageProps> {
 
   render() {
     return (
-      <div className={st(classes['ImageDiv'])}>
+      <div >
             {/*<ImageViewer onRemoveImage={() =>this.props.setChecked (this.props.Image.thumbnail,2)} width={'75%'} height={'75%'} imageUrl={this.props.Image.thumbnail} />*/}
 
 

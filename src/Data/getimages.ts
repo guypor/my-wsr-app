@@ -14,7 +14,6 @@ interface dataObaject{
 }
 
 export function getImagesUrls(): Promise<ImageObj[]> {
-
   return fetch("http://www.reddit.com/r/pics/.json")
     .then(res => res.json())
     .then((reddit) => {
