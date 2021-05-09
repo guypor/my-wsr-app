@@ -6,7 +6,7 @@ import { Tabs } from 'wix-style-react';
 import { PageHeader } from 'wix-style-react';
 import Form from './components/Form';
 
-
+const itemNames = ['Images for approval', 'Approval images', 'disapproval images'];
 export interface AppProps {
   className?: string;
 }
@@ -66,11 +66,8 @@ export const App: React.VFC<AppProps> = ({ className }) => {
         </div>
 
         <Tabs
-          items={[
-            { id: 0, title: 'Images for approval' },
-            { id: 1, title: 'Approval images' },
-            { id: 2, title: 'Disapproval images' }
-          ]}
+          items={itemNames.map((itemName, itemIndex) => ({
+            id: itemIndex, title: itemName}))}
           activeId={checked}
           hasDivider={false}
           onClick={(item) => {

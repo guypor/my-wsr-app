@@ -20,7 +20,7 @@ class CollapsableCard extends React.Component<CollapsableCardProps> {
     return (
       <div className={st(classes['Image'])}>
         {this.props.ImagesArray.filter((value => {
-          return value.checked === this.props.Checked ? true : false;
+          return value.checked === this.props.Checked;
         })).map((val) => {
           return (
             <Image setChecked={this.props.setChecked}  key={val.thumbnail} Image={val}></Image>);
