@@ -2,9 +2,10 @@ export interface ImageObj {
   thumbnail: string;
   title: string;
   checked: number;
-  subTitle : string;
   author: string;
 }
+
+
 interface dataObaject{
   data: {
     thumbnail: string;
@@ -19,7 +20,7 @@ export function getImagesUrls(): Promise<ImageObj[]> {
     .then((reddit) => {
       return reddit.data.children.reduce((acc: ImageObj[], image: dataObaject) => {
         if (image && image.data) {
-          acc.push({thumbnail :image.data.thumbnail,title:image.data.title, checked:0,subTitle:'hh',author:image.data.author})
+          acc.push({thumbnail :image.data.thumbnail,title:image.data.title, checked:0,author:image.data.author})
         }
         return acc;
       }, [])})

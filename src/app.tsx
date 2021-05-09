@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { st, classes } from './app.st.css';
 import CollapsableCard from './components/CollapsableCard';
 import { getImagesUrls, ImageObj } from './Data/getimages';
-import { FormField, Tabs } from 'wix-style-react';
-import { PageHeader, CustomModalLayout, Layout, Cell, Box, Input } from 'wix-style-react';
+import { Tabs } from 'wix-style-react';
+import { PageHeader } from 'wix-style-react';
 import Form from './components/Form';
 
 
@@ -20,28 +20,27 @@ export interface AppState {
 export const App: React.VFC<AppProps> = ({ className }) => {
   const [imagesUrls, setImagesUrls] = useState<ImageObj[]>([]);
   const [checked, setChecked] = useState(0);
-  const [showAddImage, setshowAddImage] = useState(true);
+  const [showAddImage, setShowAddImage] = useState(false);
 
 
   useEffect(() => {
     getImagesUrls().then((fetchedImagesUrls: ImageObj[]) => {
-
       setImagesUrls(fetchedImagesUrls);
     }, () => {
-      console.log('eeeerrrrrr');
+      null
     });
   }, []);
-
 
 
   const saveNewImage = (url: string, name: string, content: string) => {
     setImagesUrls((prevImagesUrl) => {
       return (
-        [...prevImagesUrl, { thumbnail: url, title: content, checked: 0, subTitle: 'hh', author: name }]
+        [...prevImagesUrl, { thumbnail: url, title: content, checked: 0, author: name }]
       );
     });
-
+    setShowAddImage(false);
   };
+
   const setUnckecedItem = (imageId: string, checked: number) => {
     setImagesUrls((currentImagesUrl) => {
       return currentImagesUrl.map((imageUrl) => {
@@ -53,10 +52,7 @@ export const App: React.VFC<AppProps> = ({ className }) => {
     });
   };
 
-  interface item {
-    id: number;
-    title: string;
-  }
+
 
   return (
     <main className={st(classes.root, className)}>
@@ -85,9 +81,9 @@ export const App: React.VFC<AppProps> = ({ className }) => {
 
 
       <section>
-        <CollapsableCard showForm={setshowAddImage} setChecked={setUnckecedItem} Checked={checked} ImagesArray={imagesUrls}></CollapsableCard>
+        <CollapsableCard showForm={setShowAddImage} setChecked={setUnckecedItem} Checked={checked} ImagesArray={imagesUrls}></CollapsableCard>
         {showAddImage?
-        <Form showForm={setshowAddImage} saveImage={saveNewImage}></Form>:
+        <Form showForm={setShowAddImage} saveImage={saveNewImage}></Form>:
           null}
       </section>
     </main>

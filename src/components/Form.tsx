@@ -19,7 +19,6 @@ interface Save{
 }
 
 class Form extends React.Component<FormProps, FormState> {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   constructor(props: FormProps) {
     super(props);
 
@@ -31,16 +30,13 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   contentChange = (evantValue: Save) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
     this.setState({ content: evantValue.target.value });
   };
   urlChange = (event: Save) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
     this.setState({ url: event.target.value });
 
   };
   nameChange = (event: Save) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
     this.setState({ name: event.target.value });
   };
 

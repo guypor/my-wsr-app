@@ -1,26 +1,20 @@
 import React from 'react';
-import { st, classes } from './Image.st.css';
 import type { ImageObj } from '../Data/getimages';
 import { CardGalleryItem } from 'wix-style-react';
+
+
 interface ImageProps {
   Image:ImageObj;
   setChecked(imageId: string, isChecked: number): void;
 }
 
 class Image extends React.Component<ImageProps> {
-
   constructor(props: ImageProps) {
     super(props);
   }
-
   render() {
     return (
       <div >
-            {/*<ImageViewer onRemoveImage={() =>this.props.setChecked (this.props.Image.thumbnail,2)} width={'75%'} height={'75%'} imageUrl={this.props.Image.thumbnail} />*/}
-
-
-
-
         <CardGalleryItem
           backgroundImageUrl={this.props.Image.thumbnail}
           badge=""
@@ -42,8 +36,6 @@ class Image extends React.Component<ImageProps> {
 
       </div>);
   }
-
-
 }
 
 export default Image;
